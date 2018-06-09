@@ -1,0 +1,16 @@
+<p>状态机运行正常</p>
+<div class="graph-view"
+     [ngStyle]="{'width.px':width,'height.px':height}"
+     #view>
+  <app-state-node ngDraggable
+                  *ngFor="let s of fsm.states"
+                  [state]="s"
+                  [bounds]="view"
+                  [inBounds]="true"
+                  [ngStyle]="{'left.px':s.x,'top.px':s.y}"
+                  [active]="s.name===activeStateName"
+                  (click)="onStateClicked(s)">
+
+  </app-state-node>
+</div>
+<p-contextMenu [target]="view" [model]="contextMenuItems"></p-contextMenu>

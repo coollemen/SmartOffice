@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button
+          (click)="drawer.toggle()">
+    <mat-icon aria-label="menu icon">menu</mat-icon>
+  </button>
+  <span>Smart Office V3.0</span>
+  <span class="spacer"></span>
+  <button mat-icon-button>
+    <mat-icon aria-label="compare arrows icon">compare_arrows</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon aria-label="apps icon">apps</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon aria-label="notifications icon">notifications</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <a mat-button class="nav-menu">
+      <mat-icon>home</mat-icon>
+      <span class="nav-title">主页</span>
+    </a>
+    <mat-divider></mat-divider>
+    <mat-accordion>
+      <mat-expansion-panel class="mat-elevation-z0">
+        <mat-expansion-panel-header [collapsedHeight]="'42px'" [expandedHeight]="'42px'">
+          <mat-panel-title>
+            <mat-icon>work_outline</mat-icon>
+            <span class="nav-title">行政执法</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <mat-list-item>执法文书管理</mat-list-item>
+          <mat-list-item>文书模板管理</mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-divider></mat-divider>
+      <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header [collapsedHeight]="'42px'" [expandedHeight]="'42px'">
+        <mat-panel-title>
+          <mat-icon>person</mat-icon>
+          <span class="nav-title">用户管理</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item>执法文书管理</mat-list-item>
+        <mat-list-item>文书模板管理</mat-list-item>
+      </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-divider></mat-divider>
+    </mat-accordion>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!--主要内容出口-->
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,11 @@
+<div>
+  <div class="title" #view>{{state.name}}</div>
+  <app-transition-node *ngFor="let trans of state.transitions"
+                       [transition]="trans"
+                       [colorIndex]="state.colorIndex"
+                       [active]="activeTransitionName==trans.eventName"
+  (click)="onTransitionClicked(trans)">
+
+  </app-transition-node>
+</div>
+<p-contextMenu [target]="view" [model]="contextMenuItems"  [appendTo]="'body'" ></p-contextMenu>

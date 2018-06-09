@@ -1,0 +1,6 @@
+<div #view [ngClass]="addTransitionClass()">
+  <span class="title">{{transition.eventName}}</span>
+  <!--<span #leftPoint class="left-connect-point" ></span>-->
+  <!--<span #rightPoint class="right-connect-point"></span>-->
+</div>
+<p-contextMenu [target]="view" [model]="contextMenuItems" [appendTo]="'body'"></p-contextMenu>

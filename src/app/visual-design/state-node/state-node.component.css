@@ -1,0 +1,24 @@
+:host{
+  display: block;
+  position: absolute;
+  width: 160px;
+  /*height: 28px;*/
+  border: dimgrey 1px solid;
+  color: white;
+  /*background: #42af42;*/
+  cursor: pointer;
+}
+.title{
+  display: block;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  vertical-align: center;
+  user-select: none;
+}
+.active-transition{
+  color: black;
+  border: #00ff2c 1px solid;
+}

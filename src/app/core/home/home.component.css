@@ -1,0 +1,28 @@
+.sidenav-container {
+  /*height: 100%;*/
+
+}
+
+.sidenav {
+  margin-top: 64px;
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.nav-title{
+  vertical-align: middle;
+  line-height: 24px;
+  padding-left: 16px;
+  text-align: left;
+}
+mat-list-item{
+  height: 42px;
+}
+.nav-menu{
+  width: 200px;
+  text-align: left;
+  padding-left: 24px;
+  padding-right: 24px;
+}

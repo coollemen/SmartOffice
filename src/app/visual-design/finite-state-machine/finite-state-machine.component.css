@@ -1,0 +1,16 @@
+.graph-view{
+  background:#eee;
+  background-image: linear-gradient(45deg,#bbb 25%,transparent 0),linear-gradient(45deg,transparent 75%,#bbb 0),linear-gradient(45deg,#bbb 25%,transparent 0),linear-gradient(45deg,transparent 75%,#bbb 0);
+  background-size: 30px 30px;
+  background-position: 0 0 ,15px 15px,15px 15px,30px 30px;
+  position: relative;
+}
+.graph-view-blue{
+  background: #58a;
+  background-image:linear-gradient(90deg,white 1px, transparent 0),linear-gradient(white 1px, transparent 0);
+  background-size: 30px 30px;
+}
+.active-state{
+  border: #00ff2c 2px solid;
+  box-shadow:3px 3px 8px #323233;
+}

@@ -1,0 +1,66 @@
+:host{
+  display: block;
+  position: relative;
+  width: 160px;
+  height: 28px;
+  /*border: dimgrey 1px solid;*/
+  color: black;
+  /*background: #5afc5a;*/
+}
+.title{
+  display: block;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  vertical-align: center;
+  user-select: none;
+
+}
+.left-connect-point{
+  display: block;
+  background-color: lawngreen;
+  position: absolute;
+  left:0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+}
+.right-connect-point{
+  display: block;
+  background-color: lawngreen;
+  position: absolute;
+  right:0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+}
+.active{
+  color: white;
+  background-color: #0291df;
+}
+.default{
+  background-color:#e4e4e4 ;
+}
+.blue{
+  background-color:#d6faff ;
+}
+.cyan{
+  background-color:#95ffd6 ;
+}
+.green{
+  background-color:#b8fdb4 ;
+}
+.yellow{
+  background-color:#e9ff8c ;
+}
+.orange{
+  background-color:#ffd682 ;
+}
+.red{
+  background-color:#ffddda ;
+}
+.purple{
+  background-color:#ebd3ff ;
+}
