@@ -7,6 +7,7 @@ import {st} from '@angular/core/src/render3';
  * 状态机
  */
 export class FSM {
+  public guid:string;
   public name: string;
   public owner: any;
   public active: boolean;

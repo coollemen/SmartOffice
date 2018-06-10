@@ -15,10 +15,11 @@ export class TransitionNodeComponent implements OnInit {
   @Input() isShowConnectPoint: boolean;
   @HostBinding('class.active-transition')
   @Input() active = false;
-  @Input()
-    // @HostBinding('style.background-color')
-  bgColor = '#5afc5a';
+  @Input() index:number=-1;
   @Input() colorIndex = 0;
+  @Input() systemEventNames:string[];
+  @Input() customEventNames:string[];
+  @Input() stateNames:string[];
   @Output() eventChanged: EventEmitter<FsmEvent>;
   @Output() targetChanged: EventEmitter<FsmEvent>;
   @Output() moveUp: EventEmitter<number>;

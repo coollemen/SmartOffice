@@ -4,7 +4,7 @@ import {GraphBaseComponent} from './graph-base/graph-base.component';
 import {FiniteStateMachineComponent} from './finite-state-machine/finite-state-machine.component';
 import {AngularDraggableModule} from 'angular2-draggable';
 import {GraphNodeComponent} from './graph-node/graph-node.component';
-import {FsmManagerService} from './services/fsm-manager.service';
+import {FsmService} from './services/fsm.service';
 import { StateNodeComponent } from './state-node/state-node.component';
 import { TransitionNodeComponent } from './transition-node/transition-node.component';
 import {ContextMenuModule} from 'primeng/primeng';
@@ -21,7 +21,7 @@ import {ContextMenuModule} from 'primeng/primeng';
     GraphNodeComponent,
     StateNodeComponent,
     TransitionNodeComponent],
-  providers: [FsmManagerService]
+  providers: [FsmService]
 })
 export class VisualDesignModule {
 }

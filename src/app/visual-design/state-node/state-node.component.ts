@@ -3,6 +3,8 @@ import {FsmState} from '../models/fsm-state';
 import {MenuItem} from 'primeng/api';
 import {FsmEvent} from '../models/fsm-event';
 import {FsmTransition} from '../models/fsm-transition';
+import {FsmService} from "../services/fsm.service";
+import {FSM} from "../models/fsm";
 
 @Component({
   selector: 'app-state-node',
@@ -22,7 +24,7 @@ export class StateNodeComponent implements OnInit, OnChanges {
   private backgroundColors: string[];
   private activeTransition: FsmTransition;
 
-  constructor() {
+  constructor(private fsmServie:FsmService) {
     if (this.state != null) {
       this.height = this.calculateNodeHeight();
     }
@@ -194,29 +196,15 @@ export class StateNodeComponent implements OnInit, OnChanges {
   }
 
   private createSystemEventMenuItems(): MenuItem[] {
-    const items: MenuItem[] = [
-      {
-        label: 'Mouse Down'
-      },
-      {
-        label: 'Mouse Up'
-      },
-      {
-        label: 'Mouse Move'
-      },
-      {
-        label: 'Mouse Out'
-      },
-      {
-        label: 'Mouse Over'
-      },
-      {
-        label: 'Click'
-      },
-      {
-        label: 'Double Click'
-      },
-    ];
+    const items: MenuItem[]=[];
+    for(var e of this.fsmServie.systemEvents){
+      items.push({
+        label:e.name,
+        command:event=>{
+          this.addTransition(e.clone());
+        }
+      })
+    }
     return items;
   }
 
@@ -253,6 +241,7 @@ export class StateNodeComponent implements OnInit, OnChanges {
     // this.transitionColor = '#f3ffff';
     // this.transitionBgColor = '#0291df';
   }
+
 
 
 }
