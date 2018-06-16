@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {FsmEvent} from '../models/fsm-event';
-import {FSM} from "../models/fsm";
+import {FSM} from '../models/fsm';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FsmService {
-  public activeFsm:FSM;
-  public fsmArray:FSM[]=[];
+  public activeFsm: FSM;
+  public fsmArray: FSM[] = [];
   public systemEvents: FsmEvent[] = [];
 
   constructor() {
@@ -49,7 +49,7 @@ export class FsmService {
   public guid(): string { // Public Domain/MIT
     var d = new Date().getTime();
     if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
-      d += performance.now(); //use high-precision timer if available
+      d += performance.now(); // use high-precision timer if available
     }
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       var r = (d + Math.random() * 16) % 16 | 0;
@@ -59,9 +59,21 @@ export class FsmService {
   }
 
   public createFsm(): FSM {
-    let fsm=new FSM();
-    fsm.guid=this.guid();
+    let fsm = new FSM();
+    fsm.guid = this.guid();
     console.log(fsm.guid);
     return fsm;
+  }
+
+  public getFsm(): FSM {
+
+  }
+
+  public saveFsm(fsm: FSM) {
+
+  }
+
+  public loadFsm(guid: string): FSM {
+
   }
 }
