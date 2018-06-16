@@ -2,14 +2,16 @@ import {FsmState} from './fsm-state';
 import {FsmEvent} from './fsm-event';
 import {FsmTransition} from './fsm-transition';
 import {st} from '@angular/core/src/render3';
-import {BmobObject} from "../../shared/decorators/bmob-object";
+import {BmobObject} from '../../shared/decorators/bmob-object';
+import {BmobData} from '../../shared/models/bmob-data';
+import {BmobField} from '../../shared/decorators/bmob-field';
 
 /**
  * 状态机
  */
-@BmobObject("fsm")
-export class FSM {
-  public guid:string;
+@BmobObject('fsm')
+export class FSM extends BmobData {
+  @BmobField('name')
   public name: string;
   public owner: any;
   public active: boolean;
@@ -22,6 +24,7 @@ export class FSM {
   public previousActiveState: FsmState;
 
   constructor() {
+    super();
     this.states = [];
     this.events = [];
     this.globalTransitions = [];

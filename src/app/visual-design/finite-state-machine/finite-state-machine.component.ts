@@ -5,8 +5,8 @@ import {FsmTransition} from '../models/fsm-transition';
 import {FsmEvent} from '../models/fsm-event';
 import {FsmState} from '../models/fsm-state';
 import {MenuItem} from 'primeng/api';
-import {BmobService} from "../../shared/services/bmob.service";
-import {log} from "util";
+import {BmobService} from '../../shared/services/bmob.service';
+import {log} from 'util';
 
 @Component({
   selector: 'app-finite-state-machine',
@@ -21,7 +21,7 @@ export class FiniteStateMachineComponent implements OnInit {
   @Input() height: number;
   private contextMenuItems: MenuItem[];
 
-  constructor(private bmobServicd:BmobService) {
+  constructor(private bmobServicd: BmobService) {
     this.initFsm();
     this.initContextMenu();
 
@@ -65,7 +65,7 @@ export class FiniteStateMachineComponent implements OnInit {
       {
         label: '保存状态机',
         icon: 'fa fa-save',
-        command:(event)=>{
+        command: (event) => {
           this.reflectFsm();
         }
       },
@@ -125,10 +125,17 @@ export class FiniteStateMachineComponent implements OnInit {
   public onStateClicked(s: FsmState) {
     this.fsm.selectState(s);
   }
-  public reflectFsm(){
-      console.log("start query!");
-      let query=this.bmobServicd.createQuery(this.fsm);
-      console.log(query.count(null));
+
+  public reflectFsm() {
+    console.log('start query!');
+    console.log(typeof this.fsm.constructor);
+    for (var t in this.fsm) {
+      console.log(t);
+    }
+
+    console.error(Object.getOwnPropertyNames(this.fsm));
+    let query = this.bmobServicd.createQuery(this.fsm.constructor);
+    console.log(query.count(null));
 
   }
 }

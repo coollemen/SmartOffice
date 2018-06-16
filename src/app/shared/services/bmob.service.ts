@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {BmobData} from '../models/bmob-data';
 
 @Injectable({
   providedIn: 'root'
@@ -12,18 +13,22 @@ export class BmobService {
     Bmob.initialize('921d1bd493411db02d8bcf1a8562b843', 'a2171a5687d9e98ca75443ddc431d43c');
   }
 
-  public createQuery(obj:any): Bmob.Query {
-    let Type=Reflect.getMetadata('type',obj.constructor);
-    let query=new Bmob.Query(Type);
+  /**
+   * 根据构造函数创建相应的Bmob Query类
+   * @param {Function} constructor 构造函数
+   * @returns {Bmob.Query} 查询类
+   */
+  public createQuery(constructor: Function): Bmob.Query {
+    let BmobType = Reflect.getMetadata('bmob-type', constructor);
+    let query = new Bmob.Query(BmobType);
     return query;
   }
 
-  public load<T>(query: Bmob.Query): T[] {
-    return null;
+  public load(query: Bmob.Query): any {
+    return query.find(null);
   }
 
-  public save(obj: any) {
-
-
+  public save(bmobObj: BmobData): any {
+    return bmobObj.data.save(null, null);
   }
 }

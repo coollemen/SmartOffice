@@ -60,13 +60,13 @@ export class FsmService {
 
   public createFsm(): FSM {
     let fsm = new FSM();
-    fsm.guid = this.guid();
+    // fsm.guid = this.guid();
     console.log(fsm.guid);
     return fsm;
   }
 
   public getFsm(): FSM {
-
+return null;
   }
 
   public saveFsm(fsm: FSM) {
@@ -74,6 +74,6 @@ export class FsmService {
   }
 
   public loadFsm(guid: string): FSM {
-
+return null;
   }
 }

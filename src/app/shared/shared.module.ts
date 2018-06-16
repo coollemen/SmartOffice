@@ -6,7 +6,7 @@ import {BmobService} from "./services/bmob.service";
   imports: [
     CommonModule
   ],
-  declarations: [BmobService],
+  declarations: [],
   providers: [BmobService],
 })
 export class SharedModule { }
