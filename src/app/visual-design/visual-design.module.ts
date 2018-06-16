@@ -8,12 +8,14 @@ import {FsmService} from './services/fsm.service';
 import { StateNodeComponent } from './state-node/state-node.component';
 import { TransitionNodeComponent } from './transition-node/transition-node.component';
 import {ContextMenuModule} from 'primeng/primeng';
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   imports: [
     CommonModule,
     AngularDraggableModule,
-    ContextMenuModule
+    ContextMenuModule,
+    SharedModule
   ],
   declarations: [
     GraphBaseComponent,

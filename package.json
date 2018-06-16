@@ -31,6 +31,7 @@
     "pixi.js": "^4.8.0",
     "primeicons": "^1.0.0-beta.6",
     "primeng": "^6.0.0-beta.1",
+    "reflect-metadata": "^0.1.12",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

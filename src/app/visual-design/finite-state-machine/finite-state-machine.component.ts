@@ -5,6 +5,8 @@ import {FsmTransition} from '../models/fsm-transition';
 import {FsmEvent} from '../models/fsm-event';
 import {FsmState} from '../models/fsm-state';
 import {MenuItem} from 'primeng/api';
+import {BmobService} from "../../shared/services/bmob.service";
+import {log} from "util";
 
 @Component({
   selector: 'app-finite-state-machine',
@@ -19,7 +21,7 @@ export class FiniteStateMachineComponent implements OnInit {
   @Input() height: number;
   private contextMenuItems: MenuItem[];
 
-  constructor() {
+  constructor(private bmobServicd:BmobService) {
     this.initFsm();
     this.initContextMenu();
 
@@ -62,7 +64,10 @@ export class FiniteStateMachineComponent implements OnInit {
       },
       {
         label: '保存状态机',
-        icon: 'fa fa-save'
+        icon: 'fa fa-save',
+        command:(event)=>{
+          this.reflectFsm();
+        }
       },
     ];
   }
@@ -119,5 +124,11 @@ export class FiniteStateMachineComponent implements OnInit {
 
   public onStateClicked(s: FsmState) {
     this.fsm.selectState(s);
+  }
+  public reflectFsm(){
+      console.log("start query!");
+      let query=this.bmobServicd.createQuery(this.fsm);
+      console.log(query.count(null));
+
   }
 }

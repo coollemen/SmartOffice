@@ -2,10 +2,12 @@ import {FsmState} from './fsm-state';
 import {FsmEvent} from './fsm-event';
 import {FsmTransition} from './fsm-transition';
 import {st} from '@angular/core/src/render3';
+import {BmobObject} from "../../shared/decorators/bmob-object";
 
 /**
  * 状态机
  */
+@BmobObject("fsm")
 export class FSM {
   public guid:string;
   public name: string;
