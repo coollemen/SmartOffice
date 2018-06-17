@@ -7,6 +7,8 @@ import {FsmState} from '../models/fsm-state';
 import {MenuItem} from 'primeng/api';
 import {BmobService} from '../../shared/services/bmob.service';
 import {log} from 'util';
+import {BmobFieldMetadata, bmobFieldMetadataKey} from "../../shared/decorators/bmob-field";
+import {BmobPropertyMetadata, bmobPropertyMetadataKey} from "../../shared/decorators/bmob-property";
 
 @Component({
   selector: 'app-finite-state-machine',
@@ -66,7 +68,7 @@ export class FiniteStateMachineComponent implements OnInit {
         label: '保存状态机',
         icon: 'fa fa-save',
         command: (event) => {
-          this.reflectFsm();
+          this.onSaveFsm();
         }
       },
     ];
@@ -126,16 +128,15 @@ export class FiniteStateMachineComponent implements OnInit {
     this.fsm.selectState(s);
   }
 
-  public reflectFsm() {
-    console.log('start query!');
-    console.log(typeof this.fsm.constructor);
-    for (var t in this.fsm) {
-      console.log(t);
-    }
-
-    console.error(Object.getOwnPropertyNames(this.fsm));
-    let query = this.bmobServicd.createQuery(this.fsm.constructor);
-    console.log(query.count(null));
-
+  public onSaveFsm() {
+    this.fsm.name="first fsm";
+    this.fsm.active=false;
+     this.bmobServicd.save(this.fsm).then(
+       result=>{
+       this.fsm.data=result;
+       alert("状态机保存成功！");
+       },error=>{
+       alert(error.code+error.message);
+     });
   }
 }

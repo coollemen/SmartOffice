@@ -5,6 +5,7 @@ import {st} from '@angular/core/src/render3';
 import {BmobObject} from '../../shared/decorators/bmob-object';
 import {BmobData} from '../../shared/models/bmob-data';
 import {BmobField} from '../../shared/decorators/bmob-field';
+import {BmobProperty} from "../../shared/decorators/bmob-property";
 
 /**
  * 状态机
@@ -14,6 +15,7 @@ export class FSM extends BmobData {
   @BmobField('name')
   public name: string;
   public owner: any;
+  @BmobField()
   public active: boolean;
   public finished: boolean;
   public startState: string;
@@ -22,12 +24,17 @@ export class FSM extends BmobData {
   public globalTransitions: FsmTransition[];
   public activeState: FsmState;
   public previousActiveState: FsmState;
-
+  @BmobProperty("jsontext")
+  public get jsonText():string{
+    return "test";
+  }
   constructor() {
     super();
     this.states = [];
     this.events = [];
     this.globalTransitions = [];
+    this.name="fsm";
+    this.active=true;
   }
 
   public addState(state: FsmState) {

@@ -9,6 +9,7 @@ import { StateNodeComponent } from './state-node/state-node.component';
 import { TransitionNodeComponent } from './transition-node/transition-node.component';
 import {ContextMenuModule} from 'primeng/primeng';
 import {SharedModule} from "../shared/shared.module";
+import { InspectorComponent } from './inspector/inspector.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {SharedModule} from "../shared/shared.module";
     FiniteStateMachineComponent,
     GraphNodeComponent,
     StateNodeComponent,
-    TransitionNodeComponent],
+    TransitionNodeComponent,
+    InspectorComponent],
   providers: [FsmService]
 })
 export class VisualDesignModule {
