@@ -1,24 +1,116 @@
-<div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards" [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+
+<nz-layout>
+  <nz-sider style="overflow: auto; height: 100vh; position: fixed; left: 0">
+    <div class="logo">
+      Visual Designer
+    </div>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" style="height:90%">
+      <li nz-submenu>
+        <span title><i class="anticon anticon-star-o"></i>General</span>
+        <ul>
+          <li nz-menu-item>Button 按钮</li>
+          <li nz-menu-item>Icon 图标</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-layout"></i>Layout</span>
+        <ul>
+          <li nz-menu-item>Grid 栅格</li>
+          <li nz-menu-item>Layout 布局</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-compass"></i>Navigation</span>
+        <ul>
+          <li nz-menu-item>Affix 固钉</li>
+          <li nz-menu-item>Breadcrumb 面包屑</li>
+          <li nz-menu-item>Dropdown 下拉菜单</li>
+          <li nz-menu-item>Menu 导航菜单</li>
+          <li nz-menu-item>Pagination 分页</li>
+          <li nz-menu-item>Steps 步骤条</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-form"></i>Data Entry</span>
+        <ul>
+          <li nz-menu-item>Autocomplete 自动完成</li>
+          <li nz-menu-item>Cascader 级联选择</li>
+          <li nz-menu-item>Checkbox 多选框</li>
+          <li nz-menu-item>DatePicker 日期选择框</li>
+          <li nz-menu-item>Form 表单</li>
+          <li nz-menu-item>Input 输入框</li>
+          <li nz-menu-item>InputNumber 数字输入框</li>
+          <li nz-menu-item>Mention 提及</li>
+          <li nz-menu-item>Radio 单选框</li>
+          <li nz-menu-item>Rate 评分</li>
+          <li nz-menu-item>Select 选择器</li>
+          <li nz-menu-item>Slider 滑动输入条</li>
+          <li nz-menu-item>Switch 开关</li>
+          <li nz-menu-item>TimePicker 时间选择框</li>
+          <li nz-menu-item>Transfer 穿梭框</li>
+          <li nz-menu-item>TreeSelect 树选择</li>
+          <li nz-menu-item>Upload 上传</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-database"></i>Data Display</span>
+        <ul>
+          <li nz-menu-item>Avatar 头像</li>
+          <li nz-menu-item>Badge 徽标数</li>
+          <li nz-menu-item>Calendar 日历</li>
+          <li nz-menu-item>Card 卡片</li>
+          <li nz-menu-item>Carousel 走马灯</li>
+          <li nz-menu-item>Collapse 折叠面板</li>
+          <li nz-menu-item>List 列表</li>
+          <li nz-menu-item>Popover 气泡卡片</li>
+          <li nz-menu-item>Table 表格</li>
+          <li nz-menu-item>Tabs 标签页</li>
+          <li nz-menu-item>Tag 标签</li>
+          <li nz-menu-item>Timeline 时间轴</li>
+          <li nz-menu-item>Tooltip 文字提示</li>
+          <li nz-menu-item>Tree 树形控件</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-notification"></i>Feedback</span>
+        <ul>
+          <li nz-menu-item>Alert 警告提示</li>
+          <li nz-menu-item>Message 全局提示</li>
+          <li nz-menu-item>Modal 对话框</li>
+          <li nz-menu-item>Notification 通知提醒框</li>
+          <li nz-menu-item>Popconfirm 气泡确认框</li>
+          <li nz-menu-item>Progress 进度条</li>
+          <li nz-menu-item>Spin 加载中</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-info-circle-o"></i>Other</span>
+        <ul>
+          <li nz-menu-item>Anchor 锚点</li>
+          <li nz-menu-item>BackTop 回到顶部</li>
+          <li nz-menu-item>Divider 分割线</li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout style="margin-left: 200">
+    <nz-header style=" padding:0; padding-left: 200px">
+      <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+        <li nz-menu-item>nav 1</li>
+        <li nz-menu-item>nav 2</li>
+        <li nz-menu-item>nav 3</li>
+      </ul>
+    </nz-header>
+    <nz-content style="margin:24px 16px 0;overflow: initial">
+      <div style="padding: 24px; background: #fff; text-align: center">
+        ...
+        <br />
+        Really
+        <br />...<br />...<br />...<br />
+        long
+        content
+      </div>
+    </nz-content>
+    <nz-footer style="text-align: center;">Ant Design ©2017 Implement By Angular</nz-footer>
+  </nz-layout>
+</nz-layout>

@@ -7,13 +7,15 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {HomeComponent} from './home/home.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import { DynamicDirective } from './directives/dynamic.directive';
+import {NgZorroAntdModule} from 'ng-zorro-antd';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     LayoutModule,
-    MaterialModule
+    MaterialModule,
+    NgZorroAntdModule
   ],
   declarations: [
     PageNotFoundComponent,

@@ -6,7 +6,7 @@ import {HomeComponent} from './core/home/home.component';
 import {FiniteStateMachineComponent} from './visual-design/finite-state-machine/finite-state-machine.component';
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/fsm', pathMatch: 'full'},
+  {path: '', redirectTo: '/main', pathMatch: 'full'},
   {path: 'main', component: DashboardComponent},
   {path: 'home', component: HomeComponent},
   {path: 'fsm', component: FiniteStateMachineComponent},
