@@ -1,0 +1,12 @@
+mat-selection-list {
+  border: 1px solid lightgrey;
+  margin: 1.6rem;
+  height: 60rem; }
+
+h3 {
+  margin: 1.6rem; }
+
+.role-select {
+  min-width: 20%; }
+
+/*# sourceMappingURL=role-manage.component.css.map */

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
+import {UserModule} from './user/user.module';
 
 registerLocaleData(zh);
 
@@ -25,10 +26,11 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     CoreModule,
     VisualDesignModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    UserModule,
+    AppRoutingModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

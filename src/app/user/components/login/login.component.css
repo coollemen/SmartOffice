@@ -1,0 +1,26 @@
+.login-form {
+  max-width: 300px; }
+
+.login-form-forgot {
+  float: right; }
+
+.login-form-button {
+  width: 100%; }
+
+.msa-icon {
+  max-width: 100px;
+  max-height: 100px; }
+
+.bg {
+  background-image: url("../../../../assets/images/login-bg2.jpg");
+  height: 100%;
+  width: 100%;
+  background-size: 100% 100%; }
+
+.card {
+  box-shadow: 5px 5px 5px #888888;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 24px;
+  border-radius: 5px; }
+
+/*# sourceMappingURL=login.component.css.map */

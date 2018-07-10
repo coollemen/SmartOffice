@@ -1,0 +1,32 @@
+<div fxLayout="row">
+  <h3>当前选择角色：</h3>
+  <mat-form-field class="role-select">
+    <mat-select  (selectionChange)="onRoleSelectChange($event)">
+      <mat-option *ngFor="let role of roles" [value]="role"> {{role.getName()}} </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div fxLayout="row">
+  <div fxFlex="45">
+    <h3>未添加用户表</h3>
+    <mat-selection-list #userList>
+      <mat-list-option *ngFor="let user of users" [value]="user"> {{user.get("realName")}} </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div fxFlex="10" fxLayout="column" fxLayoutAlign="center center">
+    <button  mat-raised-button color="primary" #moveToRight (click)="addToRoleUsers()">
+      <mat-icon >arrow_forward</mat-icon>
+    </button>
+    <span style="height: 0.8rem"></span>
+    <button  mat-raised-button color="accent" #moveToLeft (click)="removeFromRoleUsers()">
+      <mat-icon >arrow_back</mat-icon>
+    </button>
+  </div>
+  <div fxFlex="45">
+    <h3>已添加用户表</h3>
+    <mat-selection-list #roleUserList>
+      <mat-list-option *ngFor="let user of roleUsers" [value]="user"> {{user.get("realName")}} </mat-list-option>
+    </mat-selection-list>
+  </div>
+
+</div>

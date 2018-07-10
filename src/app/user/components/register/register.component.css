@@ -1,0 +1,32 @@
+.bg {
+  display: flex; }
+  .bg mat-card {
+    margin: auto;
+    margin-top: 10rem;
+    width: 50%;
+    padding: 0; }
+    .bg mat-card mat-card-content {
+      padding: 2.4rem;
+      padding-bottom: 0rem; }
+    .bg mat-card mat-card-actions {
+      padding: 2.4rem;
+      padding-top: 0;
+      margin: 0; }
+    .bg mat-card mat-form-field {
+      width: 100%; }
+    .bg mat-card img {
+      padding-left: 2.4rem;
+      padding-right: 2.4rem;
+      width: 100%; }
+    .bg mat-card .blue-header {
+      background-color: darkblue;
+      height: 6.4rem; }
+    .bg mat-card .title {
+      color: white;
+      font-size: 2.4rem;
+      padding-left: 2.4rem;
+      padding-top: 1.4rem; }
+    .bg mat-card .warn-msg {
+      color: orangered; }
+
+/*# sourceMappingURL=register.component.css.map */

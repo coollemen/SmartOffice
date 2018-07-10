@@ -1,0 +1,46 @@
+<div nz-row class="bg" nzType="flex" nzJustify="center" nzAlign="middle">
+  <div nz-col nzSpan="6" class="card">
+    <div nz-row nzType="flex" nzJustify="center" nzAlign="top" >
+      <div nz-col>
+        <img class="msa-icon" src="../assets/images/海事标志.png" alt="">
+      </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="center" nzAlign="top" >
+      <div nz-col>
+        <h2>智慧海事平台</h2>
+      </div>
+    </div>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group nzPrefixIcon="anticon anticon-user">
+            <input type="text" nz-input formControlName="userName" placeholder="用户名">
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">请输入你的用户名！
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group nzPrefixIcon="anticon anticon-lock">
+            <input type="password" nz-input formControlName="password" placeholder="密码">
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">请输入你的密码！
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <label nz-checkbox formControlName="remember">
+            <span>记住我</span>
+          </label>
+          <a class="login-form-forgot" class="login-form-forgot">忘记密码</a>
+          <button nz-button class="login-form-button" [nzType]="'primary'">登 陆</button>
+          或者
+          <a href="">立即注册！</a>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</div>
+

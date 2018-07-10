@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,kBACA;EACE,MAAM,EAAE,mBAAmB;EAC3B,MAAM,EAAE,MAAM;EACd,MAAM,EAAE,KAAK;;AAEf,EAAE;EACA,MAAM,EAAE,MAAM;;AAEhB,YAAY;EACV,SAAS,EAAE,GAAG",
+"sources": ["role-manage.component.scss"],
+"names": [],
+"file": "role-manage.component.css"
+}

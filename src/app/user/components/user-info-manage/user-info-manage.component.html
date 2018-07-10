@@ -1,0 +1,55 @@
+<div class="bg">
+  <mat-card>
+    <mat-toolbar color="primary">
+      <span>用户信息管理</span>
+    </mat-toolbar>
+    <mat-card-content>
+      <form #registerForm="ngForm">
+        <mat-form-field >
+          <input matInput #userName="ngModel" id="userName" name="userName" required type="text" placeholder="用户名"
+                 [(ngModel)]="user.username" disabled/>
+          <div [hidden]="userName.valid || userName.pristine"
+               class="alert alert-danger">
+            UserName is required
+          </div>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput #mail="ngModel" id="mail" name="mail" required type="email" placeholder="电子邮件"
+                 [(ngModel)]="user.email" disabled/>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput #realName="ngModel" id="realName" name="realName" required type="text" placeholder="姓名"
+                 [(ngModel)]="user.realName"/>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput #msaID="ngModel" id="msaID" name="msaID" required type="text" placeholder="执法证号码"
+                 [(ngModel)]="user.msaId"/>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput #phone="ngModel" id="phone" name="phone" type="text" placeholder="手机号码"
+                 [(ngModel)]="user.mobilePhoneNumber"/>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput #mobilePhone="ngModel" id="shortMobilePhone" name="shortMobilePhone" type="text"
+                 placeholder="手机短号" [(ngModel)]="user.internalPhoneNumber"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select style="width: 100%" name="region" placeholder="区域" [(ngModel)]="user.region" required>
+            <mat-option *ngFor="let n of regionNames" [value]="n">{{n}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select style="width: 100%" name="department" placeholder="部门" [(ngModel)]="user.department" required >
+            <mat-option *ngFor="let n of departmentNames" [value]="n">{{n}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <div class="warn-msg">{{message}}</div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.form.valid"
+              (click)="modifyUserInfo()">保存
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
