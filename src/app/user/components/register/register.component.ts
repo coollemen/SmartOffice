@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {MsaUser} from '../../models/msa-user';
 import {UserService} from '../../services/user.service';
 import {MatSelectChange} from '@angular/material';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'register',
@@ -21,8 +22,8 @@ export class RegisterComponent implements OnInit {
   public departmentNames: string[] = [];
   public regionNames: string[] = [];
   public message = ' ';
-
-  constructor(private userService: UserService, private router: Router) {
+  public form: FormGroup;
+  constructor(private userService: UserService, private router: Router,private fb: FormBuilder) {
     this.user = new MsaUser();
   }
 
@@ -34,6 +35,40 @@ export class RegisterComponent implements OnInit {
       error => {
         alert('Error: ' + error.code + ' ' + error.message);
       });
+    this.form = this.fb.group({
+      email            : [ null, [ Validators.email ] ],
+      password         : [ null, [ Validators.required ] ],
+      checkPassword    : [ null, [ Validators.required, this.confirmationValidator ] ],
+      nickname         : [ null, [ Validators.required ] ],
+      phoneNumberPrefix: [ '+86' ],
+      phoneNumber      : [ null, [ Validators.required ] ],
+      website          : [ null, [ Validators.required ] ],
+      captcha          : [ null, [ Validators.required ] ],
+      agree            : [ false ]
+    });
+  }
+  submitForm(): void {
+    for (const i in this.form.controls) {
+      this.form.controls[ i ].markAsDirty();
+      this.form.controls[ i ].updateValueAndValidity();
+    }
+  }
+
+  updateConfirmValidator(): void {
+    /** wait for refresh value */
+    Promise.resolve().then(() => this.form.controls.checkPassword.updateValueAndValidity());
+  }
+
+  confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
+    if (!control.value) {
+      return { required: true };
+    } else if (control.value !== this.form.controls.password.value) {
+      return { confirm: true, error: true };
+    }
+  }
+
+  getCaptcha(e: MouseEvent): void {
+    e.preventDefault();
   }
 
   register() {

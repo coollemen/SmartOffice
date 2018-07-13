@@ -24,7 +24,7 @@ export class UserService {
     user.realName = bmobUser.get('realName');
     user.msaId = bmobUser.get('msaId');
     user.internalPhoneNumber = bmobUser.get('internalPhoneNumber');
-    user.region = bmobUser.get('region');
+    user.company = bmobUser.get('region');
     user.department = bmobUser.get('department');
     user.email = bmobUser.get('email');
     return user;
@@ -37,7 +37,7 @@ export class UserService {
     bmobUser.set('realName', user.realName);
     bmobUser.set('msaId', user.msaId);
     bmobUser.set('internalPhoneNumber', user.internalPhoneNumber);
-    bmobUser.set('region', user.region);
+    bmobUser.set('region', user.company);
     bmobUser.set('department', user.department);
     bmobUser.set('email', user.email);
     // 保存
@@ -97,7 +97,7 @@ export class UserService {
     bmobUser.set('realName', user.realName);
     bmobUser.set('msaId', user.msaId);
     bmobUser.set('internalPhoneNumber', user.internalPhoneNumber);
-    bmobUser.set('region', user.region);
+    bmobUser.set('region', user.company);
     bmobUser.set('department', user.department);
     bmobUser.set('email', user.email);
     // 注册

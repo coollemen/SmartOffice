@@ -31,7 +31,7 @@ export class UserInfoManageComponent implements OnInit {
       error => {
         alert('Error: ' + error.code + ' ' + error.message);
       });
-    this.userService.getDepartmentNamesByRegion(this.user.region)
+    this.userService.getDepartmentNamesByRegion(this.user.company)
       .then(names => {
           this.departmentNames = names;
         },
@@ -52,7 +52,7 @@ export class UserInfoManageComponent implements OnInit {
           this.user.realName = bmobUser.get('realName');
           this.user.msaId = bmobUser.get('msaId');
           this.user.internalPhoneNumber = bmobUser.get('internalPhoneNumber');
-          this.user.region = bmobUser.get('region');
+          this.user.company = bmobUser.get('region');
           this.user.department = bmobUser.get('department');
           this.user.email = bmobUser.get('email');
         },
