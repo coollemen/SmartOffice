@@ -20,38 +20,66 @@ export class RegisterComponent implements OnInit {
   public user: MsaUser;
   public confirmPassword: string;
   public departmentNames: string[] = [];
-  public regionNames: string[] = [];
+  public companyNames: string[] = [];
   public message = ' ';
   public form: FormGroup;
-  constructor(private userService: UserService, private router: Router,private fb: FormBuilder) {
+  public isLoading=false;
+  confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
+    if (!control.value) {
+      return {required: true};
+    } else if (control.value !== this.form.controls.password.value) {
+      return {confirm: true, error: true};
+    }
+  };
+
+  constructor(private userService: UserService, private router: Router, private fb: FormBuilder) {
     this.user = new MsaUser();
   }
 
   ngOnInit() {
     this.userService.getRegionNames().then(
       names => {
-        this.regionNames = names;
+        this.companyNames = names;
+        if (this.companyNames.length > 0) {
+          this.onCompanySelectionChange(this.companyNames[0]);
+        }
       },
       error => {
         alert('Error: ' + error.code + ' ' + error.message);
       });
     this.form = this.fb.group({
-      email            : [ null, [ Validators.email ] ],
-      password         : [ null, [ Validators.required ] ],
-      checkPassword    : [ null, [ Validators.required, this.confirmationValidator ] ],
-      nickname         : [ null, [ Validators.required ] ],
-      phoneNumberPrefix: [ '+86' ],
-      phoneNumber      : [ null, [ Validators.required ] ],
-      website          : [ null, [ Validators.required ] ],
-      captcha          : [ null, [ Validators.required ] ],
-      agree            : [ false ]
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]],
+      checkPassword: [null, [Validators.required, this.confirmationValidator]],
+      email: [null, [Validators.email]],
+      realName: [null, [Validators.required]],
+      msaId: [null, [Validators.required]],
+      phoneNumberPrefix: ['+86'],
+      mobilePhoneNumber: [null, [Validators.required]],
+      internalPhoneNumber: [null, [Validators.required]],
+      company: ["浦东新区地方海事处", [Validators.required]],
+      department: [null, [Validators.required]],
+
     });
   }
+
   submitForm(): void {
     for (const i in this.form.controls) {
-      this.form.controls[ i ].markAsDirty();
-      this.form.controls[ i ].updateValueAndValidity();
+      this.form.controls[i].markAsDirty();
+      this.form.controls[i].updateValueAndValidity();
     }
+    //从控件获取用户注册信息
+    this.user.username=this.form.controls.username.value;
+    this.user.password=this.form.controls.password.value;
+    this.user.mobilePhoneNumber=this.form.controls.mobilePhoneNumber.value;
+    this.user.realName=this.form.controls.realName.value;
+    this.user.msaId=this.form.controls.msaId.value;
+    this.user.internalPhoneNumber=this.form.controls.internalPhoneNumber.value;
+    this.user.company=this.form.controls.company.value;
+    this.user.department=this.form.controls.department.value;
+    this.user.email=this.form.controls.email.value;
+    console.log(this.user);
+    this.register();
   }
 
   updateConfirmValidator(): void {
@@ -59,33 +87,18 @@ export class RegisterComponent implements OnInit {
     Promise.resolve().then(() => this.form.controls.checkPassword.updateValueAndValidity());
   }
 
-  confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
-    if (!control.value) {
-      return { required: true };
-    } else if (control.value !== this.form.controls.password.value) {
-      return { confirm: true, error: true };
-    }
-  }
-
-  getCaptcha(e: MouseEvent): void {
-    e.preventDefault();
-  }
-
   register() {
     console.log(this.user);
-    this.message=" ";
-    if (this.user.password !== this.confirmPassword) {
-      this.message = '两次输入的密码不一致！';
-      return;
-    }
+    this.isLoading=true;
     this.userService.register(this.user)
       .then(newUser => {
           console.log('注册完毕！');
+          this.isLoading=false;
           alert('注册完毕！');
           this.router.navigateByUrl('/login');
         },
         error => {
-          alert('注册失败！');
+          this.isLoading=false;
           switch (error.code) {
             case 201:
               this.message = error.code + ':缺失数据';
@@ -118,18 +131,17 @@ export class RegisterComponent implements OnInit {
               this.message = error.code + ':旧密码不正确';
               break;
             default:
-              this.message = error.code +":"+error.message+' 其他错误';
+              this.message = error.code + ":" + error.message + ' 其他错误';
               break;
           }
+          alert(this.message);
         }
       );
-
-
   }
 
-  onRegionSelectionChange(e: MatSelectChange) {
-    console.log(e);
-    this.userService.getDepartmentNamesByRegion(e.value)
+  onCompanySelectionChange(company: any) {
+    console.log(company);
+    this.userService.getDepartmentNamesByRegion(company)
       .then(names => {
           this.departmentNames = names;
         },
@@ -139,5 +151,7 @@ export class RegisterComponent implements OnInit {
       );
 
   }
-
+  onGoBack(){
+    this.router.navigateByUrl('/login');
+  }
 }

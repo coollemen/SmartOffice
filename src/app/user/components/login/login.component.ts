@@ -12,9 +12,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public username: string;
-  public password: string;
   public message = ' ';
+  public isLoading=false;
   validateForm: FormGroup;
   constructor(private userService: UserService, private router: Router, private fb: FormBuilder) {
   }
@@ -23,10 +22,11 @@ export class LoginComponent implements OnInit {
       this.validateForm.controls[ i ].markAsDirty();
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
+    this.login();
   }
   ngOnInit() {
     this.validateForm = this.fb.group({
-      userName: [ null, [ Validators.required ] ],
+      username: [ null, [ Validators.required ] ],
       password: [ null, [ Validators.required ] ],
       remember: [ true ]
     });
@@ -34,12 +34,13 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log('开始登陆');
-    this.userService.login(this.username, this.password)
+    this.isLoading=true;
+    this.userService.login(this.validateForm.controls['username'].value, this.validateForm.controls['password'].value)
       .then(user => {
           this.router.navigateByUrl('/main');
         },
         error => {
-          alert('登录失败！');
+          this.isLoading=false;
           switch (error.code) {
             case 101:
               this.message = error.code + ':用户名或密码不正确';
@@ -49,5 +50,11 @@ export class LoginComponent implements OnInit {
               break;
           }
         });
+  }
+  onGotoRegister(){
+    this.router.navigateByUrl('/register');
+  }
+  onGotoResetPassword(){
+    this.router.navigateByUrl('/resetPassword');
   }
 }

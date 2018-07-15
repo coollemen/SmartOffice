@@ -3,6 +3,8 @@
  */
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'reset-password',
@@ -12,20 +14,34 @@ import {UserService} from '../../services/user.service';
 export class ResetPasswordComponent implements OnInit {
   public email: string;
   public message = ' ';
-
-  constructor(private userService: UserService) {
+  public form: FormGroup;
+  public isLoading:boolean=false;
+  constructor(private userService: UserService, private router: Router,private fb: FormBuilder) {
   }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      email: [null, [Validators.email]],
+    });
   }
-
+  submitForm(): void {
+    for (const i in this.form.controls) {
+      this.form.controls[i].markAsDirty();
+      this.form.controls[i].updateValueAndValidity();
+    }
+    this.email=this.form.controls.email.value;
+    console.log(this.email);
+    this.resetPassword();
+  }
   public resetPassword() {
+    this.isLoading=true;
     this.userService.resetPassword(this.email)
       .then(user => {
+          this.isLoading=false;
           alert("邮件已经成功发送到该邮箱！");
         },
         error => {
-          alert('发送失败！');
+          this.isLoading=false;
           switch (error.code) {
             case 101:
               this.message = error.code + ':用户名或密码不正确';
@@ -67,5 +83,7 @@ export class ResetPasswordComponent implements OnInit {
 
         });
   }
-
+  onGoBack(){
+    this.router.navigateByUrl('/login');
+  }
 }

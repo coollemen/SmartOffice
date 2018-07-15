@@ -1,19 +1,19 @@
 .bg {
-  display: flex; }
-  .bg mat-card {
-    margin: auto;
-    width: 60%;
-    padding: 0; }
-    .bg mat-card mat-card-content {
-      padding: 2.4rem;
-      padding-bottom: 0rem; }
-    .bg mat-card mat-card-actions {
-      padding: 2.4rem;
-      padding-top: 0;
-      margin: 0; }
-    .bg mat-card mat-form-field {
-      width: 100%; }
-  .bg .warn-msg {
-    color: orangered; }
+  background-image: url("../../../../assets/images/login-bg.jpg");
+  height: 100%;
+  width: 100%;
+  background-size: 100% 100%; }
+
+.title {
+  padding-top: 32px;
+  font-size: 24px; }
+
+.card {
+  box-shadow: 2px 2px 2px #505050;
+  background: rgba(255, 255, 255, 0.9);
+  max-width: 600px; }
+
+.btn {
+  margin-left: 16px; }
 
 /*# sourceMappingURL=user-info-manage.component.css.map */

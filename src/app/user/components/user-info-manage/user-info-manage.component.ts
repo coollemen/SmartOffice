@@ -57,7 +57,6 @@ export class UserInfoManageComponent implements OnInit {
           this.user.email = bmobUser.get('email');
         },
         error => {
-          alert('保存失败！');
           switch (error.code) {
             case 201:
               this.message = error.code + ':缺失数据';
@@ -93,6 +92,7 @@ export class UserInfoManageComponent implements OnInit {
               this.message = error.code +":"+error.message+' 验证错误详细提示';
               break;
           }
+          alert(this.message);
         }
       );
 

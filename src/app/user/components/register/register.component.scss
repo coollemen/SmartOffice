@@ -1,41 +1,20 @@
 .bg{
-  display: flex;
-  mat-card{
-    margin: auto;
-    margin-top: 10rem;
-    width: 50%;
-    padding: 0;
-    mat-card-content{
-      padding: 2.4rem;
-      padding-bottom: 0rem;
-    }
-    mat-card-actions
-    {
-      padding: 2.4rem;
-      padding-top: 0;
-      margin: 0;
-    }
-    mat-form-field
-    {
-      width: 100%;
-    }
-    img{
-      padding-left: 2.4rem;
-      padding-right: 2.4rem;
-      width: 100%;
-    }
-    .blue-header{
-      background-color: darkblue;
-      height: 6.4rem;
-    }
-    .title{
-      color: white;
-      font-size: 2.4rem;
-      padding-left: 2.4rem;
-      padding-top: 1.4rem;
-    }
-    .warn-msg{
-      color: orangered;
-    }
-  }
+  background-image: url("../../../../assets/images/login-bg.jpg");
+  height:100%;
+  width: 100%;
+  background-size: 100% 100%;
+}
+.title{
+  padding-top: 32px;
+  font-size:24px;
+}
+.card{
+  box-shadow: 2px 2px 2px #505050;
+  background: rgba(255, 255, 255,0.9);
+  //padding: 24px;
+  //border-radius: 2px;
+  max-width: 600px;
+}
+.btn{
+  margin-left: 16px;
 }
