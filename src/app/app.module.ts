@@ -12,13 +12,14 @@ import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import {UserModule} from './user/user.module';
+import { DutyRosterComponent } from './duty-roster/components/duty-roster/duty-roster.component';
+import {DutyRosterModule} from './duty-roster/duty-roster.module';
 
 registerLocaleData(zh);
 
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -30,6 +31,7 @@ registerLocaleData(zh);
     HttpClientModule,
     NgZorroAntdModule,
     UserModule,
+    DutyRosterModule,
     AppRoutingModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
